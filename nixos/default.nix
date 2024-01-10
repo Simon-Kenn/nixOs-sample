@@ -2,5 +2,17 @@
 {
 	imports = [
 		./hardware-configuration.nix
+		./disk-config.nix
 	];
+
+	boot.loader.grub = {
+		efiSupport = true;
+		efiInstallAsRemovable = true;
+	};
+
+	networking = {
+		hostname = "hostname";
+	};
+
+	system.stateVersion = "23.11";
 }

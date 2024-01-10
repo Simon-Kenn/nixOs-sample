@@ -11,7 +11,7 @@
 	};
 
 	networking = {
-		hostname = "hostname";
+		hostName = "hostname";
 	};
 
 	system.stateVersion = "23.11";

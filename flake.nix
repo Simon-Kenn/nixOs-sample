@@ -12,18 +12,17 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
 		disko,
     ...
-  } @ inputs: let
-    inherit (self) outputs;
-  in {
+  }: 
+{
 		nixosConfigurations.nautilus = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [
+				disko.nixosModules.disko
+				./nixos/default.nix
 			];
-			specialArgs = {inherit inputs outputs;};
 		};
   };
 }

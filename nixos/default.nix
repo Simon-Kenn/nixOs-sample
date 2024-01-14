@@ -21,6 +21,10 @@
 		auto-optimise-store = true;
 	};
 
+	console = {
+		keyMap = "fr-bepo";
+	};
+
 	users.users = {
 		user = {
 			initialPassword = "passworde";

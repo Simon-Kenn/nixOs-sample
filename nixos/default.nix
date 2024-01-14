@@ -21,7 +21,7 @@
 		auto-otpimise-store = true;
 	};
 
-	user.users = {
+	users.users = {
 		user = {
 			initialPassword = "passworde";
 			isNormalUser = true;

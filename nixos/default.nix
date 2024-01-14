@@ -27,7 +27,7 @@
 
 	users.users = {
 		user = {
-			initialPassword = "passworde";
+			initialPassword = "password";
 			isNormalUser = true;
 			extraGroups = ["wheel" "video" "audio" "kvm" "networkmanager"];
 			shell = pkgs.fish;

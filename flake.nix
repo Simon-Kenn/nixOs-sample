@@ -16,7 +16,7 @@
     ...
   }: 
 {
-		nixosConfigurations.hostname = nixpkgs.lib.nixosSystem {
+		nixosConfigurations.host = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [
 				disko.nixosModules.disko

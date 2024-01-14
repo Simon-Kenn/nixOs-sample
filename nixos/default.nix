@@ -18,7 +18,7 @@
 
 	nix.settings = {
 		experimental-features = "nix-command flakes";
-		auto-otpimise-store = true;
+		auto-optimise-store = true;
 	};
 
 	users.users = {

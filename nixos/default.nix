@@ -16,6 +16,11 @@
 		hostName = "host";
 	};
 
+	nix.settings = {
+		experimental-features = "nix-command flakes";
+		auto-otpimise-store = true;
+	};
+
 	user.users = {
 		user = {
 			initialPassword = "passworde";

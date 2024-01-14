@@ -13,7 +13,16 @@
 	};
 
 	networking = {
-		hostName = "hostname";
+		hostName = "host";
+	};
+
+	user.users = {
+		user = {
+			initialPassword = "passworde";
+			isNormalUser = true;
+			extraGroups = ["wheel" "video" "audio" "kvm" "networkmanager"];
+			shell = pkgs.fish;
+		};
 	};
 
 	system.stateVersion = "23.11";

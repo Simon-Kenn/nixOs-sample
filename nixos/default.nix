@@ -36,5 +36,13 @@
 
 	programs.fish.enable = true;
 
+	environment.systemPackages = with pkgs; [
+		vim
+		git
+		pciutils
+		wget
+		curl
+	];
+
 	system.stateVersion = "23.11";
 }

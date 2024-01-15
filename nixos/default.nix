@@ -5,15 +5,25 @@
 		./disk-config.nix
 	];
 
-	boot.loader.grub = {
-		enable = true;
-		efiSupport = true;
-		efiInstallAsRemovable = true;
-		device = "nodev";
+	#boot.loader.grub = {
+	#	enable = true;
+	#	efiSupport = true;
+	#	efiInstallAsRemovable = true;
+	#	device = "nodev";
+	#};
+
+	boot = {
+		kernelPackages = pkgs.linuxPackages_latest;
+		supportedFilesystems = ["btrfs"];
+		loader = {
+			systemd-boot.enable = true;
+			efi.canTouchEfiVariables = true;
+		};
 	};
 
 	networking = {
 		hostName = "host";
+		networkmanager.enable = true;
 	};
 
 	nix.settings = {
@@ -31,11 +41,8 @@
 			initialPassword = "password";
 			isNormalUser = true;
 			extraGroups = ["wheel" "video" "audio" "kvm" "networkmanager"];
-			shell = pkgs.fish;
 		};
 	};
-
-	programs.fish.enable = true;
 
 	environment.systemPackages = with pkgs; [
 		vim

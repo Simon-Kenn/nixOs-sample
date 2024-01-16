@@ -26,7 +26,7 @@
 								name = "crypted";
 								settings = {
 									allowDiscards = true;
-									keyFile = "../secret.key";
+									#keyFile = "../secret.key";
 								};
 								content = {
 									type = "btrfs";

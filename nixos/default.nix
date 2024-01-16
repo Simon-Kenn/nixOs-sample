@@ -5,18 +5,14 @@
 		./disk-config.nix
 	];
 
-	#boot.loader.grub = {
-	#	enable = true;
-	#	efiSupport = true;
-	#	efiInstallAsRemovable = true;
-	#	device = "nodev";
-	#};
-
 	boot = {
 		kernelPackages = pkgs.linuxPackages_latest;
 		supportedFilesystems = ["btrfs"];
 		loader = {
-			systemd-boot.enable = true;
+			systemd-boot = { 
+				enable = true;
+				consoleMode = "max";
+			};
 			efi.canTouchEfiVariables = true;
 		};
 	};
@@ -40,7 +36,7 @@
 		user = {
 			initialPassword = "password";
 			isNormalUser = true;
-			extraGroups = ["wheel" "video" "audio" "kvm" "networkmanager"];
+			extraGroups = ["wheel" "networkmanager"];
 		};
 	};
 

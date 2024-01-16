@@ -1,9 +1,9 @@
 {
   disko.devices = {
     disk = {
-      vdb = {
+			sda = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-id/Micron_1100_MTFD";
         content = {
           type = "gpt";
           partitions = {
@@ -23,46 +23,24 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ]; # Override existing partition
-                # Subvolumes must set a mountpoint in order to be mounted,
-                # unless their parent is mounted
+                extraArgs = [ "-f" ]; 
                 subvolumes = {
-                  # Subvolume name is different from mountpoint
-                  "/rootfs" = {
+                  "/root" = {
+										mountOptions = ["compress=zstd" "noatime"];
                     mountpoint = "/";
                   };
-                  # Subvolume name is the same as the mountpoint
-                  "/home" = {
-                    mountOptions = [ "compress=zstd" ];
-                    mountpoint = "/home";
-                  };
-                  # Sub(sub)volume doesn't need a mountpoint as its parent is mounted
-                  "/home/user" = { };
-                  # Parent is not mounted so the mountpoint must be set
                   "/nix" = {
-                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountOptions = [ "compress=zstd" "noatime"];
                     mountpoint = "/nix";
                   };
-                  # This subvolume will be created but not mounted
-                  "/test" = { };
-                  # Subvolume for the swapfile
+                  "/persist" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/persist";
+										neededForBoot = true;
+                  };
                   "/swap" = {
+                    swap.swapfile.size = "20M";
                     mountpoint = "/.swapvol";
-                    swap = {
-                      swapfile.size = "20M";
-                      swapfile2.size = "20M";
-                      swapfile2.path = "rel-path";
-                    };
-                  };
-                };
-
-                mountpoint = "/partition-root";
-                swap = {
-                  swapfile = {
-                    size = "20M";
-                  };
-                  swapfile1 = {
-                    size = "20M";
                   };
                 };
               };

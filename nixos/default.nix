@@ -3,6 +3,7 @@
 	imports = [
 		./hardware-configuration.nix
 		./disk-config.nix
+		./erase-your-darlings.nix
 	];
 
 	boot = {

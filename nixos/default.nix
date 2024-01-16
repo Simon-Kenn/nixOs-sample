@@ -3,7 +3,7 @@
 	imports = [
 		./hardware-configuration.nix
 		./disk-config.nix
-		./erase-your-darlings.nix
+		./ephemeral-btrfs.nix
 	];
 
 	boot = {

@@ -22,25 +22,33 @@
             root = {
               size = "100%";
               content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ]; 
-                subvolumes = {
-                  "/root" = {
-										mountOptions = ["compress=zstd" "noatime"];
-                    mountpoint = "/";
-                  };
-                  "/nix" = {
-                    mountOptions = [ "compress=zstd" "noatime"];
-                    mountpoint = "/nix";
-                  };
-                  "/persist" = {
-                    mountOptions = [ "compress=zstd" "noatime" ];
-                    mountpoint = "/persist";
-                  };
-                  "/swap" = {
-                    swap.swapfile.size = "20M";
-                    mountpoint = "/.swapvol";
-                  };
+								type = "luks";
+								name = "crypted";
+								settings = {
+									allowDiscards = true;
+									keyFile = "../secret.key";
+								};
+								content = {
+									type = "btrfs";
+                	extraArgs = [ "-f" ]; 
+                	subvolumes = {
+										"/root" = {
+											mountOptions = ["compress=zstd" "noatime"];
+                  	  mountpoint = "/";
+                  	};
+                  	"/nix" = {
+                  	  mountOptions = [ "compress=zstd" "noatime"];
+                  	  mountpoint = "/nix";
+                  	};
+                  	"/persist" = {
+                  	  mountOptions = [ "compress=zstd" "noatime" ];
+                  	  mountpoint = "/persist";
+                  	};
+                  	"/swap" = {
+                  	  swap.swapfile.size = "20M";
+                  	  mountpoint = "/.swapvol";
+                  	};
+									};
                 };
               };
             };

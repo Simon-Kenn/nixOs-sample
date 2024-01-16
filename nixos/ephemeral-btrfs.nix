@@ -2,23 +2,20 @@
 let
 	eraseYourDarlings = /* bash */ ''
 		mkdir -p /tmp	
-		MNTPOINT=$(mktemp -d)
-		(
-			mount -t btrfs -o subvol=/ /dev/sdb2 "$MNTPOINT"
-			trap 'umount "$MNTPOINT"' EXIT
+    mount -o subvol=/ /dev/sda2 /mnt
 
-			echo "Creating needed directories"
-			mkdir -p "$MNTPOINT"/persist/var/{log,lib/{nixos,systemd}}
+    btrfs subvolume list -o /mnt/root | cut -f9 -d' ' |
+    while read subvolume; do
+      echo "deleting /$subvolume subvolume..."
+      btrfs subvolume delete "/mnt/$subvolume"
+    done &&
+    echo "deleting /root subvolume..." &&
+    btrfs subvolume delete /mnt/root
 
-			echo "Cleaning root subvolume"
-			btrfs subvolume list -o "$MNTPOINT/root" | cut -f9 -d ' ' |
-			while read -r subvolume; do
-				btrfs subvolume delete "$MNTPOINT/$subvolume"
-			done && btrfs subvolume delete "$MNTPOINT/root"
+    echo "restoring blank /root subvolume..."
+    btrfs subvolume snapshot /mnt/root-blank /mnt/root
 
-			echo "Restoring blank subvolume"
-			btrfs subvolume snapshot "$MNTPOINT/root-blank" "$MNTPOINT/root"
-		)
+    umount /mnt
 	'';
 in
 {

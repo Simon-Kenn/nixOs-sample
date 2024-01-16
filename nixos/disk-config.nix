@@ -44,6 +44,7 @@
                   	  mountpoint = "/persist";
                   	};
                   	"/swap" = {
+											mountOptions = [ "noatime" ];
                   	  swap.swapfile.size = "20M";
                   	  mountpoint = "/.swapvol";
                   	};

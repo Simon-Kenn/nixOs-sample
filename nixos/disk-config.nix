@@ -36,7 +36,6 @@
                   "/persist" = {
                     mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/persist";
-										neededForBoot = true;
                   };
                   "/swap" = {
                     swap.swapfile.size = "20M";

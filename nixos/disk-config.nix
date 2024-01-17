@@ -3,7 +3,7 @@
     disk = {
 			sda = {
         type = "disk";
-        device = "/dev/sdb";
+        device = "/dev/disk/by-id/ata-Micron_1100_MTFDDAV256TBN_174619CDC946";
         content = {
           type = "gpt";
           partitions = {

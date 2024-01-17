@@ -22,12 +22,12 @@
             root = {
               size = "100%";
               content = {
-								type = "luks";
-								name = "crypted";
-								settings = {
-									allowDiscards = true;
-								};
-								content = {
+								#type = "luks";
+								#name = "crypted";
+								#settings = {
+								#	allowDiscards = true;
+								#};
+								#content = {
 									type = "btrfs";
                 	extraArgs = [ "-f" ]; 
                 	subvolumes = {
@@ -48,7 +48,7 @@
                   	  swap.swapfile.size = "20M";
                   	  mountpoint = "/.swapvol";
                   	};
-									};
+									#};
                 };
               };
             };

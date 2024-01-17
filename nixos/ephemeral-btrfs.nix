@@ -2,7 +2,7 @@
 let
 	eraseYourDarlings = /* bash */ ''
 		mkdir -p /mnt	
-    mount -o subvol=/ /dev/disk/by-label/root /mnt
+    mount -o subvol=/ /dev/disk/by-partlabel/root /mnt
 
     btrfs subvolume list -o /mnt/root | cut -f9 -d' ' |
     while read subvolume; do

@@ -1,7 +1,7 @@
 { lib, config, ... }:
 let
 	eraseYourDarlings = /* bash */ ''
-		mkdir -p /tmp	
+		mkdir -p /mnt	
     mount -o subvol=/ /dev/sdb2 /mnt
 
     btrfs subvolume list -o /mnt/root | cut -f9 -d' ' |

@@ -44,6 +44,7 @@
                   	"/persist" = {
                   	  mountOptions = [ "compress=zstd" "noatime" ];
                   	  mountpoint = "/persist";
+											extraArgs = ["neededForBoot=true"];
                   	};
                   	"/swap" = {
 											mountOptions = [ "noatime" ];

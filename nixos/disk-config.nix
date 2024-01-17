@@ -8,6 +8,7 @@
           type = "gpt";
           partitions = {
             ESP = {
+							label = "boot";
               priority = 1;
               name = "ESP";
               start = "1M";
@@ -21,6 +22,7 @@
             };
             root = {
               size = "100%";
+							label = "root";
               content = {
 								#type = "luks";
 								#name = "crypted";

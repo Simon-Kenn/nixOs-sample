@@ -2,7 +2,7 @@
 let
 	eraseYourDarlings = /* bash */ ''
 		mkdir -p /mnt	
-    mount -o subvol=/ /dev/sdb2 /mnt
+    mount -o subvol=/ /dev/disk/by-label/root /mnt
 
     btrfs subvolume list -o /mnt/root | cut -f9 -d' ' |
     while read subvolume; do
@@ -27,10 +27,10 @@ in
 			description = "Rollback btrfs rootfs";
 			wantedBy = [ "intitrd.target" ];
 			requires = [ 
-				"dev-sdb2"  
+				"dev-disk-by\\x2dlabel-root.device"  
 			];
 			after = [
-				"dev-sdb2"
+				"dev-disk-by\\x2dlabel-root.device"  
 				#"systemd-cryptsetup@${config.networking.hostName}.service"
 			];
 			before = [ "sysroot.mount" ];

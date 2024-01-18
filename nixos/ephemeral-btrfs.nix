@@ -33,7 +33,6 @@
     		btrfs subvolume snapshot /mnt/root-blank /mnt/root
 
     		umount /mnt
-
 			'';
 		};
 	};

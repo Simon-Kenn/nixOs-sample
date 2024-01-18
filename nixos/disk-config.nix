@@ -59,5 +59,5 @@
       };
     };
   };
-	fileSystems."./persist".neededForBoot = true;
+	#fileSystems."./persist".neededForBoot = true;
 }

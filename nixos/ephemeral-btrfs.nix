@@ -8,10 +8,10 @@
 			description = "Rollback btrfs rootfs";
 			wantedBy = [ "intitrd.target" ];
 			requires = [ 
-				"initrd-root-device.target"
+				"dev-disk-by\\x2dlabel-root.device"
 			];
 			after = [
-				"initrd-root-device.target"
+				"dev-disk-by\\x2dlabel-root.device"
 				#"systemd-cryptsetup@${config.networking.hostName}.service"
 			];
 			before = [ "sysroot.mount" ];
@@ -21,7 +21,7 @@
 				mkdir /tmp -p
 				MNTPOINT=$(mktemp -d)
     		(
-    		  mount -t btrfs -o subvol=/ /dev/disk/by-partlabel/root "$MNTPOINT"
+    		  mount -t btrfs -o subvol=/ /dev/disk/by-label/root "$MNTPOINT"
     		  trap 'umount "$MNTPOINT"' EXIT
 
     		  echo "Creating needed directories"

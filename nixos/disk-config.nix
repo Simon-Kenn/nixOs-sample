@@ -16,7 +16,7 @@
               type = "EF00";
               content = {
                 type = "filesystem";
-								extraArgs = "-L boot";
+								extraArgs = ["-L boot"];
                 format = "vfat";
                 mountpoint = "/boot";
               };

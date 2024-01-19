@@ -31,7 +31,7 @@
 								#};
 								#content = {
 									type = "btrfs";
-                	extraArgs = [ "-f" ]; 
+                	extraArgs = [ "-f" "-L myLabel"]; 
                 	subvolumes = {
 										"/root" = {
 											mountOptions = ["compress=zstd" "noatime"];

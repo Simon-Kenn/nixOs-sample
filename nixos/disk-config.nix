@@ -16,6 +16,7 @@
               type = "EF00";
               content = {
                 type = "filesystem";
+								extraArgs = "-L boot";
                 format = "vfat";
                 mountpoint = "/boot";
               };
@@ -31,7 +32,7 @@
 								#};
 								#content = {
 									type = "btrfs";
-                	extraArgs = [ "-f" "-L myLabel"]; 
+                	extraArgs = [ "-f" "-L root"]; 
                 	subvolumes = {
 										"/root" = {
 											mountOptions = ["compress=zstd" "noatime"];

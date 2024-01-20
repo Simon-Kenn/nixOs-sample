@@ -36,7 +36,17 @@
 		user = {
 			initialPassword = "password";
 			isNormalUser = true;
+			shell = pkgs.fish;
 			extraGroups = ["wheel" "networkmanager"];
+		};
+	};
+
+	programs.fish = {
+		enable = true;
+		vendor = {
+			completions.enable = true;
+			config.enable = true;
+			functions.enable = true;
 		};
 	};
 

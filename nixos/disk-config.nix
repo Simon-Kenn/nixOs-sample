@@ -25,12 +25,12 @@
               size = "100%";
 							label = "root";
               content = {
-								#type = "luks";
-								#name = "crypted";
-								#settings = {
-								#	allowDiscards = true;
-								#};
-								#content = {
+								type = "luks";
+								name = "crypted";
+								settings = {
+									allowDiscards = true;
+								};
+								content = {
 									type = "btrfs";
                 	extraArgs = [ "-f" "-L NIXROOT"]; 
                 	subvolumes = {
@@ -51,7 +51,7 @@
                   	  swap.swapfile.size = "20M";
                   	  mountpoint = "/.swapvol";
                   	};
-									#};
+									};
                 };
               };
             };

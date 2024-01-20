@@ -16,7 +16,7 @@
               type = "EF00";
               content = {
                 type = "filesystem";
-								extraArgs = ["-n boot"];
+								extraArgs = ["-n NIXBOOT"];
                 format = "vfat";
                 mountpoint = "/boot";
               };
@@ -32,7 +32,7 @@
 								#};
 								#content = {
 									type = "btrfs";
-                	extraArgs = [ "-f" "-L root"]; 
+                	extraArgs = [ "-f" "-L NIXROOT"]; 
                 	subvolumes = {
 										"/root" = {
 											mountOptions = ["compress=zstd" "noatime"];

@@ -8,7 +8,6 @@
           type = "gpt";
           partitions = {
             ESP = {
-							label = "boot";
               priority = 1;
               name = "ESP";
               start = "1M";
@@ -23,7 +22,6 @@
             };
             root = {
               size = "100%";
-							label = "root";
               content = {
 								type = "luks";
 								name = "crypted";
@@ -34,22 +32,22 @@
 									type = "btrfs";
                 	extraArgs = [ "-f" "-L NIXROOT"]; 
                 	subvolumes = {
-										"/rootfs" = {
-											mountOptions = ["compress=zstd" "noatime"];
+										"/root" = {
                   	  mountpoint = "/";
+											mountOptions = ["compress=zstd" "noatime"];
                   	};
                   	"/nix" = {
-                  	  mountOptions = [ "compress=zstd" "noatime"];
                   	  mountpoint = "/nix";
+                  	  mountOptions = [ "compress=zstd" "noatime"];
                   	};
                   	"/persist" = {
-                  	  mountOptions = [ "compress=zstd" "noatime" ];
                   	  mountpoint = "/persist";
+                  	  mountOptions = [ "compress=zstd" "noatime" ];
                   	};
                   	"/swap" = {
-											mountOptions = [ "noatime" ];
-                  	  swap.swapfile.size = "20M";
                   	  mountpoint = "/.swapvol";
+                  	  swap.swapfile.size = "20M";
+											mountOptions = [ "noatime" ];
                   	};
 									};
                 };

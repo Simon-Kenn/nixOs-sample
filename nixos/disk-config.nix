@@ -34,7 +34,7 @@
 									type = "btrfs";
                 	extraArgs = [ "-f" "-L NIXROOT"]; 
                 	subvolumes = {
-										"/root" = {
+										"/rootfs" = {
 											mountOptions = ["compress=zstd" "noatime"];
                   	  mountpoint = "/";
                   	};

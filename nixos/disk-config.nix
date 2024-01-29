@@ -33,7 +33,7 @@
                 	extraArgs = [ "-f" "-L NIXROOT"]; 
 									postCreateHook = /* sh */ ''
 										MNTPOINT=$(mktemp -d)
-										mount = "/dev/mapper/pool-root" "$MNTPOINT" -o subvol=/
+										mount "/dev/mapper/pool-root" "$MNTPOINT" -o subvol=/
 										trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
 										btrfs subvolume snapshot -r $MNTPOINT/root $MNTPOINT/root-blank
 

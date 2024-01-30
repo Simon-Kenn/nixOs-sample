@@ -11,13 +11,13 @@ let
       mkdir -p "$MNTPOINT"/persist/var/{log,lib/{nixos,systemd}}
 
       echo "Cleaning root subvolume"
-      btrfs subvolume list -o "$MNTPOINT/" | cut -f9 -d ' ' |
+      btrfs subvolume list -o "$MNTPOINT/root" | cut -f9 -d ' ' |
       while read -r subvolume; do
         btrfs subvolume delete "$MNTPOINT/$subvolume"
-      done && btrfs subvolume delete "$MNTPOINT/"
+      done && btrfs subvolume delete "$MNTPOINT/root"
 
       echo "Restoring blank subvolume"
-      btrfs subvolume snapshot "$MNTPOINT/root-blank" "$MNTPOINT/"
+      btrfs subvolume snapshot "$MNTPOINT/root-blank" "$MNTPOINT/root"
     )
   '';
   phase1Systemd = config.boot.initrd.systemd.enable;

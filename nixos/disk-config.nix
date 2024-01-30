@@ -6,10 +6,10 @@
         device = "/dev/disk/by-id/ata-Micron_1100_MTFDDAV256TBN_174619CDC946";
         content = {
           type = "gpt";
-          partitions = {
-            ESP = {
+          partitions = [
+					{
+            esp = {
               priority = 1;
-              name = "ESP";
               start = "1M";
               end = "128M";
               type = "EF00";
@@ -20,50 +20,76 @@
                 mountpoint = "/boot";
               };
             };
-            root = {
-              size = "100%";
-              content = {
+						root = {
+							size = "100%";
+							content = {
 								type = "luks";
 								name = "crypted";
 								settings = {
 									allowDiscards = true;
 								};
 								content = {
-									type = "btrfs";
-                	extraArgs = [ "-f" "-L NIXROOT"]; 
-									postCreateHook = /* sh */ ''
-										MNTPOINT=$(mktemp -d)
-										mount "/dev/mapper/crypted" "$MNTPOINT" -o subvol=/
-										trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
-										btrfs subvolume snapshot -r $MNTPOINT/root $MNTPOINT/root-blank
-
-									'';
-                	subvolumes = {
-										"/root" = {
-                  	  mountpoint = "/";
-											mountOptions = ["compress=zstd" "noatime"];
-                  	};
-                  	"/nix" = {
-                  	  mountpoint = "/nix";
-                  	  mountOptions = [ "compress=zstd" "noatime"];
-                  	};
-                  	"/persist" = {
-                  	  mountpoint = "/persist";
-                  	  mountOptions = [ "compress=zstd" "noatime" ];
-                  	};
-                  	"/swap" = {
-                  	  mountpoint = "/.swapvol";
-                  	  swap.swapfile.size = "20M";
-											mountOptions = [ "noatime" ];
-                  	};
-									};
-                };
-              };
-            };
-          };
-        };
+									type = "lvm_pv";
+									vg = "pool";
+								};
+							};
+						};
+					}
+				];
       };
     };
-  };
+	};
+		lvm_vg = {
+			pool = {
+				type = "lvm_vg";
+				lvs = {
+					root = {
+						size = "100%FREE";
+						content = {
+							type = "btrfs";
+            	extraArgs = [ "-f" "-L NIXROOT"]; 
+							postCreateHook = /* sh */ ''
+								MNTPOINT=$(mktemp -d)
+								mount "/dev/mapper/crypted" "$MNTPOINT" -o subvol=/
+								trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
+								btrfs subvolume snapshot -r $MNTPOINT/root $MNTPOINT/root-blank
+
+							'';
+            	subvolumes = {
+								"/root" = {
+              	  mountpoint = "/";
+									mountOptions = ["compress=zstd" "noatime"];
+              	};
+              	"/nix" = {
+              	  mountpoint = "/nix";
+              	  mountOptions = [ "compress=zstd" "noatime"];
+              	};
+              	"/persist" = {
+              	  mountpoint = "/persist";
+              	  mountOptions = [ "compress=zstd" "noatime" ];
+              	};
+              	"/swap" = {
+              	  mountpoint = "/.swapvol";
+              	  swap.swapfile.size = "20M";
+									mountOptions = [ "noatime" ];
+              	};
+							};
+            };
+					};
+				};
+			};
+		};
+	};
 	fileSystems."/persist".neededForBoot = true;
 }
+#root = {
+            #  size = "100%";
+            #  content = {
+						#		type = "luks";
+						#		name = "crypted";
+						#		settings = {
+						#			allowDiscards = true;
+						#		};
+            #  };
+            #};
+

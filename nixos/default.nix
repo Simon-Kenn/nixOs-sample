@@ -3,7 +3,7 @@
 	imports = [
 		./hardware-configuration.nix
 		./disk-config.nix
-		./ephemeral-btrfs.nix
+		#./ephemeral-btrfs.nix
 	];
 
 	boot = {
@@ -47,6 +47,7 @@
 	#users.groups.network = {};
 
 	#systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
+	hardware.enableRedistributableFirmware = true;
 
 	nix.settings = {
 		experimental-features = "nix-command flakes";

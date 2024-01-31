@@ -20,7 +20,29 @@
 	networking = {
 		hostName = "host";
 		networkmanager.enable = true;
+
+		wireless = {
+			enable = true;
+			fallbackToWPA2 = false;
+			
+			networks = {
+				"Bbox-5c32B2F3" = {
+					psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
+				};
+			};
+
+			allowAuxiliaryImperativeNetworks = true;
+			userControlled = {
+				enable = true;
+				group = "network";
+			};
+			extraConfig = ''
+				update_config=1
+			'';
+		};
 	};
+
+	users.groups.network = {};
 
 	nix.settings = {
 		experimental-features = "nix-command flakes";

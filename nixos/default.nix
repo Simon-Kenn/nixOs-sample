@@ -25,7 +25,7 @@
 			fallbackToWPA2 = false;
 			
 			networks = {
-				"Bbox-5c32B2F3" = {
+				Bbox-5C32B2F3 = {
 					psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
 				};
 			};
@@ -43,6 +43,8 @@
 
 	users.groups.network = {};
 
+	systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
+
 	nix.settings = {
 		experimental-features = "nix-command flakes";
 		auto-optimise-store = true;
@@ -58,7 +60,7 @@
 			initialPassword = "password";
 			isNormalUser = true;
 			shell = pkgs.fish;
-			extraGroups = ["wheel" "networkmanager"];
+			extraGroups = ["wheel" "network"];
 		};
 	};
 

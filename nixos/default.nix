@@ -22,31 +22,30 @@
 
 		useDHCP = lib.mkDefault true;
 
-		networkmanager.enable = true;
-		#wireless = {
-		#	enable = true;
-		#	#fallbackToWPA2 = false;
-		#	interfaces = ["wlp2s0"];
-		#	networks = {
-		#		Bbox-5C32B2F3 = {
-		#			psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
-		#		};
-		#	};
+		wireless = {
+			enable = true;
+			#fallbackToWPA2 = false;
+			interfaces = ["wlp2s0"];
+			networks = {
+				Bbox-5C32B2F3 = {
+					psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
+				};
+			};
 
-		#	allowAuxiliaryImperativeNetworks = true;
-		#	userControlled = {
-		#		enable = true;
-		#		group = "network";
-		#	};
-		#	extraConfig = ''
-		#		update_config=1
-		#	'';
-		#};
+			allowAuxiliaryImperativeNetworks = true;
+			userControlled = {
+				enable = true;
+				group = "network";
+			};
+			extraConfig = ''
+				update_config=1
+			'';
+		};
 	};
 
-	#users.groups.network = {};
+	users.groups.network = {};
 
-	#systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
+	systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
 	hardware.enableRedistributableFirmware = true;
 
 	nix.settings = {
@@ -64,7 +63,7 @@
 			initialPassword = "password";
 			isNormalUser = true;
 			shell = pkgs.fish;
-			extraGroups = ["wheel" "network" "networkmanager"];
+			extraGroups = ["wheel" "network"];
 		};
 	};
 

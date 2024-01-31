@@ -4,5 +4,5 @@
 - `git clone https://Simon-Kenn/nixOs-sample.git`
 - `cd nixOs-sample`
 - `sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko nixos/disk-config.nix`
-- `sudo btrfs subvolume snapshot -r /mnt/root /mnt/root-blank`
+- `cp -r . /mnt/nix/persist/nixos-sample`
 - `sudo nixos-install --flake .#host`

@@ -63,7 +63,7 @@
 			initialPassword = "password";
 			isNormalUser = true;
 			shell = pkgs.fish;
-			extraGroups = ["wheel" "network"];
+			extraGroups = ["wheel" "network" "networkmanager"];
 		};
 	};
 

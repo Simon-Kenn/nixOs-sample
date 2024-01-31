@@ -20,7 +20,7 @@
 	networking = {
 		hostName = "host";
 
-		useDHCP = true;
+		useDHCP = lib.mkDefault true;
 
 		networkmanager.enable = true;
 		#wireless = {

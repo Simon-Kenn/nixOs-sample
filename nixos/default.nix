@@ -22,8 +22,8 @@
 
 		wireless = {
 			enable = true;
-			fallbackToWPA2 = false;
-			
+			#fallbackToWPA2 = false;
+			interfaces = ["wlp2s0"];
 			networks = {
 				Bbox-5C32B2F3 = {
 					psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
@@ -41,9 +41,9 @@
 		};
 	};
 
-	users.groups.network = {};
+	#users.groups.network = {};
 
-	systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
+	#systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
 
 	nix.settings = {
 		experimental-features = "nix-command flakes";

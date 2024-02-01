@@ -3,6 +3,7 @@
 	imports = [
 		./hardware-configuration.nix
 		./enycrypted-ephemeral-btrfs.nix
+		./impermanence.nix
 		./users.nix
 		./wireless.nix
 	];
@@ -34,7 +35,6 @@
 		font = "Lat2-Terminus16";
 		keyMap = "fr-bepo";
 	};
-
 
 	programs.fish = {
 		enable = true;

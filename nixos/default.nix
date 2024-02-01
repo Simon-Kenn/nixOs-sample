@@ -2,7 +2,7 @@
 {
 	imports = [
 		./hardware-configuration.nix
-		./enycrypted-ephemeral-btrfs.nix
+		./encrypted-ephemeral-btrfs.nix
 		./impermanence.nix
 		./users.nix
 		./wireless.nix

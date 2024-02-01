@@ -24,10 +24,8 @@
 
 		wireless = {
 			enable = true;
-			#fallbackToWPA2 = false;
-			interfaces = ["wlp2s0"];
 			networks = {
-				Bbox-5C32B2F3 = {
+				"Bbox-5C32B2F3" = {
 					psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
 				};
 			};

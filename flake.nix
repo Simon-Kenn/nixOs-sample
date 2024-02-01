@@ -14,16 +14,13 @@
 
   outputs = {
     nixpkgs,
-		disko,
     ...
-  }: 
+  }@inputs: 
 {
 		nixosConfigurations.host = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
-			modules = [
-				disko.nixosModules.disko
-				./nixos/default.nix
-			];
+			modules = [ ./nixos/default.nix ];
+			specialArgs = { inherit inputs; };
 		};
   };
 }

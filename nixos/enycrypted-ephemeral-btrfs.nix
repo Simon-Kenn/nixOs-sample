@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, inputs, ... }:
 let
   wipeScript = /* bash */ ''
     mkdir /tmp -p
@@ -23,6 +23,9 @@ let
   phase1Systemd = config.boot.initrd.systemd.enable;
 in
 {
+	imports = [
+		inputs.disko.nixosModules.disko
+	];
   boot.initrd = {
     supportedFilesystems = [ "btrfs" ];
     postDeviceCommands = lib.mkIf (!phase1Systemd) (lib.mkBefore wipeScript);

@@ -3,20 +3,17 @@
 		inputs.impermanence.nixosModules.impermanence
 	];
 
-	environment.persistence = {
-		"/persist" = {
+	environment.persistence."/persist" = {
+		directories = [
+			"/var/lib/systemd"
+			"/var/lib/nixos"
+			"/var/log"
+			"/srv"
+		];
+		users.user = {
 			directories = [
-				"/var/lib/systemd"
-				"/var/lib/nixos"
-				"/var/log"
-				"/srv"
+				"nixos-sample"
 			];
-			#users.user = {
-			#	directories = [
-			#		"nixos-sample"
-			#	];
-			#};
 		};
 	};
-	programs.fuse.userAllowOther = true;
 }

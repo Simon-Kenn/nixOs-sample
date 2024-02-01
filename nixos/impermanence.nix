@@ -10,10 +10,10 @@
 			"/var/log"
 			"/srv"
 		];
-		#users.user = {
-		#	directories = [
-		#		"nixos-sample"
-		#	];
-		#};
+		users.user = {
+			directories = [
+				"nixos-sample"
+			];
+		};
 	};
 }

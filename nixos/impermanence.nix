@@ -10,8 +10,12 @@
 				"/var/lib/nixos"
 				"/var/log"
 				"/srv"
-				"/home/user/nixos-sample"
 			];
+			users.user = {
+				directories = [
+					"nixos-sample"
+				];
+			};
 		};
 	};
 	programs.fuse.userAllowOther = true;

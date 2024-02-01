@@ -3,7 +3,7 @@
 	imports = [
 		./hardware-configuration.nix
 		./disk-config.nix
-		#./ephemeral-btrfs.nix
+		./ephemeral-btrfs.nix
 	];
 
 	boot = {

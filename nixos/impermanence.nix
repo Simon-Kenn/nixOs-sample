@@ -10,6 +10,7 @@
 				"/var/lib/nixos"
 				"/var/log"
 				"/srv"
+				"/home/user/nixos-sample"
 			];
 		};
 	};

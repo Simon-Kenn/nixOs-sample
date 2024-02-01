@@ -12,7 +12,7 @@
 		];
 		users.user = {
 			directories = [
-				"nixos-sample"
+				{ directory = "nixos-sample"; user = "user";}
 			];
 		};
 	};

@@ -10,10 +10,5 @@
 			"/var/log"
 			"/srv"
 		];
-		users.user = {
-			directories = [
-				{ directory = "nixos-sample"; user = "user";}
-			];
-		};
 	};
 }

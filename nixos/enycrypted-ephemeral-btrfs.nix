@@ -1,5 +1,49 @@
+{ lib, config, ... }:
+let
+  wipeScript = /* bash */ ''
+    mkdir /tmp -p
+    MNTPOINT=$(mktemp -d)
+    (
+      mount -t btrfs -o subvol=/ /dev/disk/by-label/NIXROOT "$MNTPOINT"
+      trap 'umount "$MNTPOINT"' EXIT
+
+      echo "Creating needed directories"
+      mkdir -p "$MNTPOINT"/persist/var/{log,lib/{nixos,systemd}}
+
+      echo "Cleaning root subvolume"
+      btrfs subvolume list -o "$MNTPOINT/root" | cut -f9 -d ' ' |
+      while read -r subvolume; do
+        btrfs subvolume delete "$MNTPOINT/$subvolume"
+      done && btrfs subvolume delete "$MNTPOINT/root"
+
+      echo "Restoring blank subvolume"
+      btrfs subvolume snapshot "$MNTPOINT/root-blank" "$MNTPOINT/root"
+    )
+  '';
+  phase1Systemd = config.boot.initrd.systemd.enable;
+in
 {
-  disko.devices = {
+  boot.initrd = {
+    supportedFilesystems = [ "btrfs" ];
+    postDeviceCommands = lib.mkIf (!phase1Systemd) (lib.mkBefore wipeScript);
+    systemd.services.restore-root = lib.mkIf phase1Systemd {
+      description = "Rollback btrfs rootfs";
+      wantedBy = [ "initrd.target" ];
+      requires = [
+        "dev-disk-by\\x2dlabel-NIXROOT.device"
+      ];
+      after = [
+        "dev-disk-by\\x2dlabel-NIXROOT.device"
+        "systemd-cryptsetup@NIXROOT.service"
+      ];
+      before = [ "sysroot.mount" ];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      script = wipeScript;
+    };
+  };
+
+	disko.devices = {
     disk = {
 			sda = {
         type = "disk";
@@ -35,7 +79,6 @@
 										mount "/dev/mapper/crypted" "$MNTPOINT" -o subvol=/
 										trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
 										btrfs subvolume snapshot -r $MNTPOINT/root $MNTPOINT/root-blank
-
 									'';
                 	subvolumes = {
 										"/root" = {
@@ -64,5 +107,6 @@
       };
     };
   };
+
 	fileSystems."/persist".neededForBoot = true;
 }

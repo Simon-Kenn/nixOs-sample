@@ -2,8 +2,7 @@
 {
 	imports = [
 		./hardware-configuration.nix
-		./disk-config.nix
-		./ephemeral-btrfs.nix
+		./enycrypted-ephemeral-btrfs.nix
 	];
 
 	boot = {

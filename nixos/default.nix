@@ -3,6 +3,7 @@
 	imports = [
 		./hardware-configuration.nix
 		./enycrypted-ephemeral-btrfs.nix
+		./users.nix
 		./wireless.nix
 	];
 
@@ -34,14 +35,6 @@
 		keyMap = "fr-bepo";
 	};
 
-	users.users = {
-		user = {
-			initialPassword = "password";
-			isNormalUser = true;
-			shell = pkgs.fish;
-			extraGroups = ["wheel" "network"];
-		};
-	};
 
 	programs.fish = {
 		enable = true;

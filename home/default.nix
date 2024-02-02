@@ -1,4 +1,9 @@
-{ inputs, outputs, ...}: {
+{ inputs, ...}:
+{
+	imports = [
+		inputs.impermanence.nixosModules.home-manager.impermanence
+	];
+
 	nixpkgs = {
 		config = {
 			allowUnfree = true;
@@ -11,6 +16,15 @@
 		stateVersion = "24.05";
 		config = {
 			allowUnfree = true;
+		};
+
+		persistence = {
+			"/persist/home/user" = {
+				directories = [
+					"nixos-sample"
+				];
+				allowOther = true;
+			};
 		};
 	};
 

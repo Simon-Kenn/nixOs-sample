@@ -39,6 +39,10 @@
 		});
 		forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 	in {
+		inherit lib;
+
+		devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+
 		nixosConfigurations.host = lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [ ./nixos/default.nix ];

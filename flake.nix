@@ -20,6 +20,7 @@
   outputs = {
 		self,
     nixpkgs,
+		home-manager,
     ...
   } @inputs: let
 	inherit (self) outputs;
@@ -31,7 +32,7 @@ in {
 		};
 
 		homeConfigurations = {
-			"user@host" = nixpkgs.lib.homeManagerConfiguration {
+			"user@host" = home-manager.lib.homeManagerConfiguration {
 				modules = [./home];
 				pkgs = nixpkgs.legacyPackages.x86_64-linux;	
 				extraSpecialArgs = { inherit inputs outputs; };

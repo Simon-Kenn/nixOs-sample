@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}:
+{config, lib, pkgs, inputs, outputs, ...}:
 {
 	imports = [
 		./hardware-configuration.nix
@@ -6,6 +6,7 @@
 		./impermanence.nix
 		./users.nix
 		./wireless.nix
+		inputs.home-manager.nixosModules.home-manager	
 	];
 
 	boot = {
@@ -29,7 +30,8 @@
 		hostName = "host";
 		useDHCP = lib.mkDefault true;
 	};
-
+	
+	home-manager.extraSpecialArgs = { inherit inputs outputs; };
 	hardware.enableRedistributableFirmware = true;
 
 	nix.settings = {

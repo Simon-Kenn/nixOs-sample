@@ -9,5 +9,5 @@
 		packages = [ pkgs.home-manager ];
 	};
 
-	#home-manager.users.user = import ../home/default.nix;
+	home-manager.users.user = import ../home/default.nix;
 }

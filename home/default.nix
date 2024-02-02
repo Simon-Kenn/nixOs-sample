@@ -1,4 +1,4 @@
-{
+{ inputs, outputs, ...}: {
 	nixpkgs = {
 		config = {
 			allowUnfree = true;
@@ -9,6 +9,9 @@
 		username = "user";
 		homeDirectory = "/home/user";
 		stateVersion = "24.05";
+		config = {
+			allowUnfree = true;
+		};
 	};
 
 	programs.home-manager.enable = true;

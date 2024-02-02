@@ -10,5 +10,5 @@
 		packages = [ pkgs.home-manager ];
 	};
 
-	home-manager.users.user = import ../home;
+	home-manager.users.user = import ../home/default.nix;
 }

@@ -1,4 +1,4 @@
-{ inputs, ...}:
+{ inputs, pkgs, ...}:
 {
 	imports = [
 		inputs.impermanence.nixosModules.home-manager.impermanence
@@ -26,6 +26,7 @@
 	};
 
 	nix = {
+		package = pkgs.nix;
 		settings = {
 			experimental-features = [ "nix-command" "flakes" "repl-flake" ];
 		};

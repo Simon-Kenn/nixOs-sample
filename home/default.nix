@@ -19,6 +19,7 @@
 			"/persist/home/user" = {
 				directories = [
 					"nixos-sample"
+					"Codes"
 				];
 				allowOther = true;
 			};

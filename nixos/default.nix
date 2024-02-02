@@ -19,6 +19,12 @@
 		};
 	};
 
+	nixpkgs = {
+		config = {
+			allowUnfree = true;
+		};
+	};
+
 	networking = {
 		hostName = "host";
 		useDHCP = lib.mkDefault true;

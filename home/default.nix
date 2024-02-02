@@ -1,7 +1,7 @@
 {
-	config = {
-		allowUnfree = true;
-	};
+	#config = {
+	#	allowUnfree = true;
+	#};
 
 	home = {
 		username = "user";

@@ -26,22 +26,8 @@
 		inherit (self) outputs;
 	
 		lib = nixpkgs.lib // home-manager.lib;
-		systems = [
-			"aarch64-linux"
-			"i686-linux"
-			"x86_64-linux"
-			"aarch64-darwin"
-			"x86_64-darwin"
-		];
-		pkgsFor = lib.genAttrs systems (system: import nixpkgs {
-			inherit system;
-			config.allowUnfree = true;
-		});
-		forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 	in {
 		inherit lib;
-
-		devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
 
 		nixosConfigurations.host = lib.nixosSystem {
 			system = "x86_64-linux";

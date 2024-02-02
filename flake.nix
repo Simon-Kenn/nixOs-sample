@@ -33,7 +33,7 @@ in {
 
 		homeConfigurations = {
 			"user@host" = home-manager.lib.homeManagerConfiguration {
-				modules = [./home];
+				modules = [ ./home ];
 				pkgs = nixpkgs.legacyPackages.x86_64-linux;	
 				extraSpecialArgs = { inherit inputs outputs; };
 			};

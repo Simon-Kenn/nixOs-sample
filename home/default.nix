@@ -15,14 +15,14 @@
 		homeDirectory = "/home/user";
 		stateVersion = "24.05";
 
-		#persistence = {
-		#	"/persist/home/user" = {
-		#		directories = [
-		#			"nixos-sample"
-		#		];
-		#		allowOther = true;
-		#	};
-		#};
+		persistence = {
+			"/persist/home/user" = {
+				directories = [
+					"nixos-sample"
+				];
+				allowOther = true;
+			};
+		};
 	};
 
 	nix = {

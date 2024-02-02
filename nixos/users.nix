@@ -6,8 +6,9 @@
 			extraGroups = ["wheel" "network" "git"];
 		};
 
-		home-manager.users.user = import ../home;
 
 		packages = [ pkgs.home-manager ];
 	};
+
+	home-manager.users.user = import ../home;
 }

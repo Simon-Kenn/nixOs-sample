@@ -14,9 +14,6 @@
 		username = "user";
 		homeDirectory = "/home/user";
 		stateVersion = "24.05";
-		config = {
-			allowUnfree = true;
-		};
 
 		persistence = {
 			"/persist/home/user" = {

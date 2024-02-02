@@ -1,6 +1,8 @@
 {
-	config = {
-		allowUnfree = true;
+	nixpkgs = {
+		config = {
+			allowUnfree = true;
+		};
 	};
 
 	home = {
@@ -12,5 +14,5 @@
 	programs.home-manager.enable = true;
 	programs.git.enable = true;
 
-	#systemd.user.startServices = "sd-switch";
+	systemd.user.startServices = "sd-switch";
 }

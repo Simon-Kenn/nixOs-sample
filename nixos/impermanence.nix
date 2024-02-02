@@ -11,4 +11,6 @@
 			"/srv"
 		];
 	};
+
+	programs.fuse.userAllowOther = true;
 }

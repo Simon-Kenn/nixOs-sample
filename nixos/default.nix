@@ -6,7 +6,6 @@
 		./impermanence.nix
 		./users.nix
 		./wireless.nix
-		inputs.home-manager.nixosModules.home-manager	
 	];
 
 	boot = {

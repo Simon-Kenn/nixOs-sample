@@ -1,4 +1,6 @@
-{ pkgs, ...}: {
+{ pkgs, inputs, ...}: 
+{
+	imports = [ inputs.home-manager.nixosModules.home-manager	];
 	users.users = {
 		user = {
 			initialPassword = "password";

@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
 		impermanence.url = "github:nix-community/impermanence";
-		sops-nix.url = "github:Mic92:sops-nix";
+		sops-nix.url = "github:Mic92/sops-nix";
 
 		disko = {
 			url = "github:nix-community/disko";

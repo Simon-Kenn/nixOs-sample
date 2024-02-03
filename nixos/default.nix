@@ -6,6 +6,7 @@
 		./impermanence.nix
 		./users.nix
 		./wireless.nix
+		./sops.nix
 	];
 
 	boot = {

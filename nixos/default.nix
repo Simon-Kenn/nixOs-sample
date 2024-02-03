@@ -52,7 +52,7 @@
 		curl
 		sops
 		age
-		gnupgp
+		gnupg
 		ssh-to-age
 	];
 

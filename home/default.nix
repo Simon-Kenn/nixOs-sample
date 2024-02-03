@@ -19,6 +19,7 @@
 			"/persist/home/user" = {
 				directories = [
 					"Codes"
+					".ssh"
 				];
 				allowOther = true;
 			};

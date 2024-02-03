@@ -44,7 +44,7 @@
 	services.gpg-agent = {
 		enable = true;
 		enableSshSupport = true;
-		pinentryFlavor = pkgs.pinentry-curses;
+		pinentryFlavor = "curses";
 	};
 
 	systemd.user.startServices = "sd-switch";

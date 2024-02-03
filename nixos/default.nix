@@ -50,6 +50,10 @@
 		pciutils
 		wget
 		curl
+		sops
+		age
+		gnupgp
+		ssh-to-age
 	];
 
 	system.stateVersion = "23.11";

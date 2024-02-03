@@ -36,6 +36,15 @@
 	programs = {
 		home-manager.enable = true;
 		git.enable = true;
+		gpg = {
+			enable = true;
+		};
+	};
+
+	services.gpg-agent = {
+		enable = true;
+		enableSshSupport = true;
+		pinentryFlavor = pkgs.pinentry-curses;
 	};
 
 	systemd.user.startServices = "sd-switch";

@@ -36,12 +36,6 @@
 	programs = {
 		home-manager.enable = true;
 		git.enable = true;
-		fish = {
-			enable = true;
-			shellInit = ''
-				export GPG_TTY=$(tty)
-			'';
-		};
 		gpg = {
 			enable = true;
 			publicKeys = [{
@@ -56,20 +50,5 @@
 		pinentryFlavor = "curses";
 	};
  
-	systemd.user.services = {
-		link-gnupg-sockets = {
-			Unit = {
-				Description = "link gnupg sockets from /run to /home";	
-			};
-			Service = {
-				Type = "oneshot";
-				ExecStart = "${pkgs.coreutils}/bin/ln -Tfs /run/user/%U/gnupg %h/.gnupg-sockets";
-        ExecStop = "${pkgs.coreutils}/bin/rm $HOME/.gnupg-sockets";
-        RemainAfterExit = true;
-			};
-			Install.WantedBy = [ "default.target" ];
-		};
-	};
-
 	systemd.user.startServices = "sd-switch";
 }

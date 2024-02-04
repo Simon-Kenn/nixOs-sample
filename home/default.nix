@@ -41,6 +41,7 @@
 	programs = {
 		home-manager.enable = true;
 		git.enable = true;
+		fish.enable = true;
 		gpg = {
 			enable = true;
 			publicKeys = [{

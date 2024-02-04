@@ -2,7 +2,7 @@
 	networking = {
 		wireless = {
 			enable = true;
-			environmentFile = config.sops.secrets."wireless.env".path;
+			environmentFile = config.sops.secrets.wireless.env.path;
 			networks = {
 				"@home-uuid@" = {
 					#psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";

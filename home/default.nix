@@ -38,6 +38,10 @@
 		git.enable = true;
 		gpg = {
 			enable = true;
+			publicKeys = [{
+				source = ./pgp.asc;
+				trust = 5;	
+			}];
 		};
 	};
 

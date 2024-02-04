@@ -8,7 +8,7 @@ in {
 	sops = {
 		defaultSopsFile = ../secrets/secrets.yaml;
 		age.sshKeyPaths = map getKeyPath keys;
-		secrets.user-password = {};
+		#secrets.user-password = {};
 		#secrets.wifi-psk = {};
 		#age.generateKey = true;
 	};

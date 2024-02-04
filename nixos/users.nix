@@ -2,16 +2,16 @@
 {
 	imports = [ inputs.home-manager.nixosModules.home-manager	];
 
-	#sops.secrets.user-password.neededForUsers = true;
+	sops.secrets.user-password.neededForUsers = true;
 
 	users.users = {
 		user = {
-			initialPassword = "password";
+			#initialPassword = "password";
 			isNormalUser = true;
 			shell = pkgs.fish;
 			extraGroups = ["wheel" "network" "git"];
 			packages = [ pkgs.home-manager ];
-			#hashedPasswordFile = config.sops.secrets.user-password.path;
+			hashedPasswordFile = config.sops.secrets.user-password.path;
 		};
 	};
 

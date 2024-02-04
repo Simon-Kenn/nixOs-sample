@@ -9,9 +9,9 @@
 				"Bbox-5C32B2F3" = {
 					psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
 				};
-				"@HOME@" = {
-					psk = "@home@";
-				};
+				#"@HOME@" = {
+				#	psk = "@home@";
+				#};
 			};
 
 			allowAuxiliaryImperativeNetworks = true;

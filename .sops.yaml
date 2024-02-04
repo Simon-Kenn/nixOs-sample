@@ -1,7 +1,7 @@
 keys:
   - &nixos_sample D895 8B48 2738 752B B0BF  53E7 D286 2F68 2897 AFD3
 creation_rules:
-  - path_regex: nixos/secrets.ha?ml$ 
+  - path_regex: secrets/secrets.ya?ml$ 
     key_groups:
       - pgp:
         - *nixos_sample

@@ -9,7 +9,7 @@
 			isNormalUser = true;
 			shell = pkgs.fish;
 			extraGroups = ["wheel" "network" "git"];
-			packages = [ pkgs.homesmanager ];
+			packages = [ pkgs.home-manager ];
 			hashedPasswordFile = config.sops.secrets.user_password.path;
 		};
 	};

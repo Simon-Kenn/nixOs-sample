@@ -1,6 +1,7 @@
 { pkgs, inputs, ...}: 
 {
 	imports = [ inputs.home-manager.nixosModules.home-manager	];
+	sops.secrets.user-password.neededForUsers = true;
 	users.users = {
 		user = {
 			initialPassword = "password";

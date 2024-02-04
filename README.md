@@ -6,3 +6,7 @@
 - `sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko nixos/encrypted-ephemeral-btrfs.nix`
 - `cp -r . /mnt/persist/nixos-sample`
 - `sudo nixos-install --flake .#host`
+
+## Importing exemple private key
+`gpg --import ~/Codes/nixos-sample/open-secrets/private.pgp`
+

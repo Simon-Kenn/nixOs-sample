@@ -4,7 +4,7 @@
 			enable = true;
 			networks = {
 				"Bbox-5C32B2F3" = {
-					psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
+					psk = config.sops.secrets.wifi_psk.path;
 				};
 			};
 

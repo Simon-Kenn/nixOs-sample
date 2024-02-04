@@ -1,5 +1,5 @@
 {config, ...}: {
-	#sops.secrets.wireless.neededForUsers = true;
+	sops.secrets.wireless.neededForUsers = true;
 	networking = {
 		wireless = {
 			enable = true;

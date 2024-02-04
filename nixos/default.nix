@@ -5,6 +5,7 @@
 		./encrypted-ephemeral-btrfs.nix
 		./impermanence.nix
 		./users.nix
+		./fish.nix
 		./wireless.nix
 		./openssh.nix
 		./sops.nix

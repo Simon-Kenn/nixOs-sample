@@ -1,9 +1,10 @@
 {config, ...}: {
-	sops.secrets.wireless.neededForUsers = true;
+	#sops.secrets.wireless.neededForUsers = true;
+	sops.secrets."wireless.env" = {};
 	networking = {
 		wireless = {
 			enable = true;
-			environmentFile = config.sops.secrets.wireless.path;
+			environmentFile = config.sops.secrets."wireless.env".path;
 			networks = {
 				"@HOME@" = {
 					#psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";

@@ -24,6 +24,10 @@
 				allowOther = true;
 			};
 		};
+
+		sessionVariables = {
+			GPG_TTY = "$(tty)";
+		};
 	};
 
 	nix = {

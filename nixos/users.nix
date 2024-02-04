@@ -1,19 +1,13 @@
-{ pkgs, inputs, config, ...}: 
+{ pkgs, inputs, ...}: 
 {
 	imports = [ inputs.home-manager.nixosModules.home-manager	];
-
-	sops.secrets.user_password = {
-		sopsFile = ../secrets/secrets.yaml;
-		neededForUsers = true;
-	};
-
 	users.users = {
 		user = {
+			initialPassword = "password";
 			isNormalUser = true;
 			shell = pkgs.fish;
 			extraGroups = ["wheel" "network" "git"];
 			packages = [ pkgs.home-manager ];
-			hashedPasswordFile = config.sops.secrets.user_password.path;
 		};
 	};
 

@@ -4,9 +4,9 @@
 			enable = true;
 			environmentFile = config.sops.secrets."wireless.env".path;
 			networks = {
-				"@home-uuid" = {
+				"@home-uuid@" = {
 					#psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
-					psk = "@home-psk";
+					psk = "@home-psk@";
 				};
 			};
 

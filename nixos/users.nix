@@ -2,7 +2,10 @@
 {
 	imports = [ inputs.home-manager.nixosModules.home-manager	];
 
-	sops.secrets.user_password.neededForUsers = true;
+	sops.secrets.user_password = {
+		sopsFile = ../secrets/secrets.yaml;
+		neededForUsers = true;
+	};
 
 	users.users = {
 		user = {

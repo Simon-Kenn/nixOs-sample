@@ -6,8 +6,10 @@
 			enable = true;
 			environmentFile = config.sops.secrets."wireless.env".path;
 			networks = {
+				"Bbox-5C32B2F3" = {
+					psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
+				};
 				"@HOME@" = {
-					#psk = "A2C44EC1ECF3EEAA2471617E2EDC1F";
 					psk = "@home@";
 				};
 			};

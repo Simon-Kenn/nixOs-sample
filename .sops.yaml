@@ -1,6 +1,6 @@
 keys:
   #- &nixos_sample D895 8B48 2738 752B B0BF  53E7 D286 2F68 2897 AFD3
-  - &nixos age1fzx8ntjgmg5wlu4gpuc5p4dc25s978yaw0d80yxtt4ychy2ccawse0fn30 
+  - &nixos age1g6yz490lfknf5e2sptd3razfqhl56spp5un0hv9zjdwkmlqdzcwsqpvj3g
 creation_rules:
   - path_regex: secrets/secrets.ya?ml$ 
     key_groups:

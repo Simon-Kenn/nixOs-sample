@@ -36,6 +36,12 @@
 	programs = {
 		home-manager.enable = true;
 		git.enable = true;
+		fish = {
+			enable = true;
+			shellInit = ''
+				export GPG_TTY=$(tty)
+			'';
+		};
 		gpg = {
 			enable = true;
 			publicKeys = [{
@@ -49,7 +55,7 @@
 		enable = true;
 		pinentryFlavor = "curses";
 	};
-
+ 
 	systemd.user.services = {
 		link-gnupg-sockets = {
 			Unit = {

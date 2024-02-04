@@ -27,7 +27,6 @@
 
 		sessionVariables = {
 			GPG_TTY = "$(tty)";
-			EDITOR = "nano";
 		};
 	};
 

@@ -8,6 +8,5 @@ in {
 	sops = {
 		defaultSopsFile = ../secrets/secrets.yaml;
 		age.sshKeyPaths = map getKeyPath keys;
-		secrets.wifi-psk = {};
 	};
 }

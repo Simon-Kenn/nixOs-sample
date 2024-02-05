@@ -2,6 +2,7 @@
 {
 	imports = [
 		./hardware-configuration.nix
+		./disk.nix
 		./encrypted-ephemeral-btrfs.nix
 		./impermanence.nix
 		./users.nix

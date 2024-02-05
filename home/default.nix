@@ -11,6 +11,13 @@
 		};
 	};
 
+	nix = {
+		package = lib.mkDefault pkgs.nix;
+		settings = {
+			experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+		};
+	};
+
 	home = {
 		username = "user";
 		homeDirectory = "/home/user";
@@ -24,13 +31,6 @@
 				];
 				allowOther = true;
 			};
-		};
-	};
-
-	nix = {
-		package = lib.mkDefault pkgs.nix;
-		settings = {
-			experimental-features = [ "nix-command" "flakes" "repl-flake" ];
 		};
 	};
 

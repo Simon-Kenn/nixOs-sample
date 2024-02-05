@@ -2,6 +2,7 @@
 {
 	imports = [
 		inputs.impermanence.nixosModules.home-manager.impermanence
+		./gpg.nix
 	];
 
 	nixpkgs = {
@@ -24,10 +25,6 @@
 				allowOther = true;
 			};
 		};
-
-		sessionVariables = {
-			GPG_TTY = "$(tty)";
-		};
 	};
 
 	nix = {
@@ -41,18 +38,6 @@
 		home-manager.enable = true;
 		git.enable = true;
 		fish.enable = true;
-		gpg = {
-			enable = true;
-			publicKeys = [{
-				source = ./pgp.asc;
-				trust = 5;	
-			}];
-		};
-	};
-
-	services.gpg-agent = {
-		enable = true;
-		pinentryFlavor = "curses";
 	};
  
 	systemd.user.startServices = "sd-switch";

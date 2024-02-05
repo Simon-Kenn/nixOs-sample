@@ -2,6 +2,7 @@
 {
 	imports = [
 		./hardware-configuration.nix
+		inputs.disko.nixosModules.disko
 		./disk.nix
 		./encrypted-ephemeral-btrfs.nix
 		./impermanence.nix
